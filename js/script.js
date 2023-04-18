@@ -5,5 +5,13 @@ const time, alarm, currentH, currentM,
 sound.loop = true;
 
 function displayTime() {
-    const now = new Date()
+    const now = new Date();
+    time = now.toLocaleTimeString();
+    clock.textContent = time;
+    if (time === alarm) {
+        sound.play();
+        snooze.className = "";
+    }
+    setTimeout(displayTime, 1000)
 }
+displayTime();
